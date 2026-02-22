@@ -1,0 +1,5 @@
+{
+  "commands.limited_lifes.lives.target_required": "Specify a player: /lives <target>",
+  "commands.limited_lifes.lives.get.success": "%s lives: %s/%s",
+  "commands.limited_lifes.lives.set.success": "Set for %s: %s/%s"
+}
