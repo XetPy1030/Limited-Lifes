@@ -1,5 +1,9 @@
 {
   "commands.limited_lifes.lives.target_required": "Укажите игрока: /lives <target>",
-  "commands.limited_lifes.lives.get.success": "Жизни %s: %s/%s",
-  "commands.limited_lifes.lives.set.success": "Для %s установлено: %s/%s"
+  "commands.limited_lifes.lives.get.success": "Сердца %s: %s/%s",
+  "commands.limited_lifes.lives.set.success": "Для %s установлено сердец: %s/%s",
+  "actionbar.limited_lifes.hearts": "❤ %s/%s",
+  "message.limited_lifes.hearts_left": "Осталось %s сердец.",
+  "message.limited_lifes.hearts_restored": "Теперь у тебя %s сердец.",
+  "message.limited_lifes.hearts_critical": "Критически мало сердец: %s."
 }

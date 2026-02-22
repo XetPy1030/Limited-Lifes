@@ -1,17 +1,24 @@
 package com.xetpy.lives;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class LivesService {
+    private static final int CRITICAL_LIVES_THRESHOLD = 2;
+
     public int getLives(ServerPlayer player) {
         return store(player).getLives(player.getUUID());
     }
 
     public int setLives(ServerPlayer player, int lives) {
+        int previous = getLives(player);
         int updated = store(player).setLives(player.getUUID(), lives);
         recalculateMaxHealth(player, updated);
+        notifyOnLivesChanged(player, previous, updated);
         return updated;
     }
 
@@ -33,7 +40,9 @@ public class LivesService {
     }
 
     public void syncPlayerState(ServerPlayer player) {
-        recalculateMaxHealth(player, getLives(player));
+        int currentLives = getLives(player);
+        recalculateMaxHealth(player, currentLives);
+        sendActionBar(player, currentLives);
     }
 
     public void recalculateMaxHealth(ServerPlayer player, int lives) {
@@ -51,5 +60,34 @@ public class LivesService {
 
     private PlayerLivesStore store(ServerPlayer player) {
         return PlayerLivesStore.get(player.level().getServer());
+    }
+
+    private void notifyOnLivesChanged(ServerPlayer player, int previousLives, int updatedLives) {
+        sendActionBar(player, updatedLives);
+
+        if (updatedLives < previousLives) {
+            player.sendSystemMessage(Component.translatable("message.limited_lifes.hearts_left", updatedLives));
+        } else if (updatedLives > previousLives) {
+            player.sendSystemMessage(Component.translatable("message.limited_lifes.hearts_restored", updatedLives));
+        }
+
+        if (updatedLives <= CRITICAL_LIVES_THRESHOLD && updatedLives < previousLives) {
+            player.sendSystemMessage(Component.translatable("message.limited_lifes.hearts_critical", updatedLives));
+            player.level().playSound(
+                    null,
+                    player.blockPosition(),
+                    SoundEvents.NOTE_BLOCK_BELL.value(),
+                    SoundSource.PLAYERS,
+                    0.9F,
+                    0.55F
+            );
+        }
+    }
+
+    private void sendActionBar(ServerPlayer player, int lives) {
+        player.displayClientMessage(
+                Component.translatable("actionbar.limited_lifes.hearts", lives, LivesRules.MAX_LIVES),
+                true
+        );
     }
 }
