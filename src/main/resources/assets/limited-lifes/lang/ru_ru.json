@@ -5,5 +5,12 @@
   "actionbar.limited_lifes.hearts": "❤ %s/%s",
   "message.limited_lifes.hearts_left": "Осталось %s сердец.",
   "message.limited_lifes.hearts_restored": "Теперь у тебя %s сердец.",
-  "message.limited_lifes.hearts_critical": "Критически мало сердец: %s."
+  "message.limited_lifes.hearts_critical": "Критически мало сердец: %s.",
+  "message.limited_lifes.ritual.cooldown": "Ритуал перезаряжается. Подожди %s сек.",
+  "message.limited_lifes.ritual.full_lives": "Ритуал не нужен: у тебя максимум сердец.",
+  "message.limited_lifes.ritual.catalyst_required": "Для ритуала держи в руке Тотем бессмертия и нажми Shift + ПКМ по алтарю.",
+  "message.limited_lifes.ritual.missing_resources": "Для ритуала нужно: тотем x%s, алмазный блок x%s, уровни опыта x%s.",
+  "message.limited_lifes.ritual.success": "Ритуал удался. Теперь сердец: %s/%s.",
+  "message.limited_lifes.debt_mode.active": "Долг крови активен. Искупление только через ритуал у алтаря.",
+  "message.limited_lifes.last_chance": "Последний шанс! На %s сек. дарованы скорость и сопротивление."
 }

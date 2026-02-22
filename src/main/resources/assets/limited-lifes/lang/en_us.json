@@ -5,5 +5,12 @@
   "actionbar.limited_lifes.hearts": "❤ %s/%s",
   "message.limited_lifes.hearts_left": "%s hearts remaining.",
   "message.limited_lifes.hearts_restored": "You now have %s hearts.",
-  "message.limited_lifes.hearts_critical": "Critical hearts left: %s."
+  "message.limited_lifes.hearts_critical": "Critical hearts left: %s.",
+  "message.limited_lifes.ritual.cooldown": "Ritual is recharging. Wait %s sec.",
+  "message.limited_lifes.ritual.full_lives": "Ritual is not needed: your hearts are already full.",
+  "message.limited_lifes.ritual.catalyst_required": "Hold a Totem of Undying and use Shift + Right Click on the altar.",
+  "message.limited_lifes.ritual.missing_resources": "Ritual requires: totem x%s, diamond block x%s, XP levels x%s.",
+  "message.limited_lifes.ritual.success": "Ritual succeeded. Hearts now: %s/%s.",
+  "message.limited_lifes.debt_mode.active": "Blood debt is active. Redemption is only possible through the altar ritual.",
+  "message.limited_lifes.last_chance": "Last chance! Speed and Resistance granted for %s sec."
 }
