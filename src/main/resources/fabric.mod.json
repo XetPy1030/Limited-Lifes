@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "limited-lifes",
+	"version": "${version}",
+	"name": "Limited Lifes",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/limited-lifes/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.xetpy.LimitedLifes"
+		],
+		"client": [
+			"com.xetpy.LimitedLifesClient"
+		]
+	},
+	"mixins": [
+		"limited-lifes.mixins.json",
+		{
+			"config": "limited-lifes.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

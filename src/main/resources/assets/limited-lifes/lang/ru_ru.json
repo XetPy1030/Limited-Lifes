@@ -1,0 +1,5 @@
+{
+  "commands.limited_lifes.lives.target_required": "Укажите игрока: /lives <target>",
+  "commands.limited_lifes.lives.get.success": "Жизни %s: %s/%s",
+  "commands.limited_lifes.lives.set.success": "Для %s установлено: %s/%s"
+}
