@@ -111,6 +111,10 @@ public class LivesService {
         return true;
     }
 
+    public boolean isRitualAltar(ServerPlayer player, BlockState clickedState) {
+        return matchesRitualAltar(config(player), clickedState);
+    }
+
     public void recalculateMaxHealth(ServerPlayer player, int lives) {
         AttributeInstance maxHealthAttribute = player.getAttribute(Attributes.MAX_HEALTH);
         if (maxHealthAttribute == null) {

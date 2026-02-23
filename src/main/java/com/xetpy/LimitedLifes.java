@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class LimitedLifes implements ModInitializer {
     public static final String MOD_ID = "xetpy";
@@ -37,11 +38,15 @@ public class LimitedLifes implements ModInitializer {
             if (!player.isShiftKeyDown()) {
                 return InteractionResult.PASS;
             }
+            BlockState clickedState = world.getBlockState(hitResult.getBlockPos());
+            if (!LIVES_SERVICE.isRitualAltar(serverPlayer, clickedState)) {
+                return InteractionResult.PASS;
+            }
             if (!player.getMainHandItem().is(Items.TOTEM_OF_UNDYING)) {
                 serverPlayer.sendSystemMessage(Component.translatable("message.limited_lifes.ritual.catalyst_required"));
                 return InteractionResult.SUCCESS;
             }
-            return LIVES_SERVICE.tryRitualRestore(serverPlayer, world.getBlockState(hitResult.getBlockPos()))
+            return LIVES_SERVICE.tryRitualRestore(serverPlayer, clickedState)
                     ? InteractionResult.SUCCESS
                     : InteractionResult.PASS;
         });
